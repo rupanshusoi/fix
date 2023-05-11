@@ -48,7 +48,7 @@ private:
     , name_to_program_()
     , local_storage_()
     , workers_()
-    , num_workers_( 16 )
+    , num_workers_( 1 )
     , threads_active_( false )
     , work_( 0 )
   {

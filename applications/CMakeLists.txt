@@ -5,6 +5,7 @@ cmake_policy(SET CMP0115 NEW)
 project(applications)
 add_subdirectory(util)
 add_subdirectory(map)
+add_subdirectory(test)
 add_subdirectory(flatware)
 
 include(FetchContent)

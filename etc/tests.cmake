@@ -1,5 +1,7 @@
 enable_testing()
 
+set(CMAKE_VERBOSE_MAKEFILE on)
+
 file(
   MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/.fix
 )

@@ -10,6 +10,17 @@ add_custom_command(
 add_custom_target(addblob_wasm ALL DEPENDS addblob.wasm)
 
 add_custom_command(
+  OUTPUT "subblob.wasm"
+  DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/subblob.wat
+          ${CMAKE_BINARY_DIR}/_deps/wabt-build/wat2wasm
+  COMMAND ${CMAKE_BINARY_DIR}/_deps/wabt-build/wat2wasm
+          --enable-multi-memory
+          ${CMAKE_CURRENT_SOURCE_DIR}/subblob.wat
+          -o subblob.wasm)
+
+add_custom_target(subblob_wasm ALL DEPENDS subblob.wasm)
+
+add_custom_command(
   OUTPUT "add-simple.wasm"
   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/add-simple.wat
           ${CMAKE_BINARY_DIR}/_deps/wabt-build/wat2wasm
