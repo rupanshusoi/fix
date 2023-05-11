@@ -1,0 +1,1 @@
+cmake --build build/ --parallel 256 && build/src/tester/stateless-tester tree:4 string:none file:build/applications-prefix/src/applications-build/test/test-linked.wasm uint32:$1 file:build/testing/wasm-examples/addblob.wasm
