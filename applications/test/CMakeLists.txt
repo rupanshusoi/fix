@@ -12,16 +12,30 @@ add_library(test_obj OBJECT "test.cc")
 
 link_libc("${CMAKE_BINARY_DIR}/test/CMakeFiles/test_obj.dir/test.cc.o" test_obj test.wasm) # outputs test.wasm
 
-# link fixpoint_storage, which defines wat tables and memories
 add_custom_command(
-        OUTPUT "linked_with_storage.wasm"
+        OUTPUT "test-linked-memory.wasm"
         DEPENDS ${CMAKE_BINARY_DIR}/_deps/wasm-tools-build/src/module-combiner/wasmlink
         test.wasm
-        ../util/fixpoint_storage.wasm
+        util.wasm
         COMMAND ${CMAKE_BINARY_DIR}/_deps/wasm-tools-build/src/module-combiner/wasmlink
         --enable-multi-memory
         --enable-exceptions
         test.wasm
+        util.wasm
+        -n util
+        -o "test-linked-memory.wasm"
+)
+
+# link fixpoint_storage, which defines wat tables and memories
+add_custom_command(
+        OUTPUT "linked_with_storage.wasm"
+        DEPENDS ${CMAKE_BINARY_DIR}/_deps/wasm-tools-build/src/module-combiner/wasmlink
+        test-linked-memory.wasm
+        ../util/fixpoint_storage.wasm
+        COMMAND ${CMAKE_BINARY_DIR}/_deps/wasm-tools-build/src/module-combiner/wasmlink
+        --enable-multi-memory
+        --enable-exceptions
+        test-linked-memory.wasm
         ../util/fixpoint_storage.wasm
         -n fixpoint_storage
         -o "linked_with_storage.wasm"

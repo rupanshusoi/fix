@@ -7,7 +7,7 @@
   (import "fixpoint_storage" "ro_mem_2" (memory $ro_mem_2 0))
   (import "fixpoint_storage" "ro_mem_3" (memory $ro_mem_3 0)) 
 
-  (import "wasi_command" "memory" (memory $program_mem 0))
+  (import "test" "memory" (memory $program_mem 0))
 
   (func (export "ro_mem_0_to_program_memory") (param $program_offset i32) (param $ro_offset i32) (param $len i32)
     (memory.copy $ro_mem_0 $program_mem
