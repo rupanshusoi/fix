@@ -226,7 +226,8 @@ Program link_program( const string_view program_content )
 
   shared_ptr<char> code( static_cast<char*>( program_mem ), free );
   uint64_t init_entry = elf_info.func_map.at( "initProgram" );
-  uint64_t main_entry = elf_info.func_map.at( "w2c_function_0x5Ffixpoint_apply" );
+
+  uint64_t main_entry = elf_info.func_map.at( "w2c_function_0x5FZ15_fixpoint_applyPU4AS10c" );
   uint64_t cleanup_entry = elf_info.func_map.at( "wasm2c_function_free" );
   uint64_t instance_size_entry = elf_info.func_map.at( "get_instance_size" );
 #if TIME_FIXPOINT == 2
